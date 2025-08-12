@@ -1,0 +1,19 @@
+<div class="grid grid-cols-3 gap-4">
+  <div *ngFor="let col of columns" class="bg-gray-100 p-4 rounded">
+    <h3 class="font-bold mb-3">{{col}}</h3>
+    <div *ngFor="let t of getTasks(col)" class="bg-white p-3 mb-3 rounded shadow">
+      <div class="flex justify-between items-start">
+        <div>
+          <div class="font-semibold">{{ t.title }}</div>
+          <div class="text-sm text-gray-600">{{ t.description }}</div>
+          <div class="text-xs text-gray-500 mt-2">Created by: {{ t.createdBy }}</div>
+          <div *ngIf="t.movedBy" class="text-xs text-gray-400">Moved by: {{ t.movedBy }} at {{ t.movedAt | date:'short' }}</div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <button *ngIf="canMove() && t.status === 'Backlog'" (click)="move(t)" class="px-2 py-1 rounded bg-indigo-600 text-white text-sm">Move to In Progress</button>
+          <button *ngIf="canMove() && t.status === 'In Progress'" (click)="move(t)" class="px-2 py-1 rounded bg-green-600 text-white text-sm">Move to Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

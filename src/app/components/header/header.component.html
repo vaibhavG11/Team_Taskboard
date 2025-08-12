@@ -1,0 +1,7 @@
+<header [ngClass]="user?.role === 'Team Member' ? 'bg-purple-600' : 'bg-green-600'" class="text-white p-4">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <div class="font-bold">Mini Team Taskboard</div>
+    <div *ngIf="user?.name">Logged in as: <span class="font-semibold">{{user.name}}</span> ({{user.role}})</div>
+    <div><button class="bg-white text-black px-2 py-1 rounded" (click)="logout()">Logout</button></div>
+  </div>
+</header>
