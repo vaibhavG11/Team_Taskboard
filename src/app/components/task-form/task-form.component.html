@@ -1,9 +1,9 @@
-<div class="p-4 bg-white rounded shadow">
+<div class="p-4 bg-gray-200 rounded shadow border border-gray-400">
   <h3 class="font-semibold mb-2">Add Task</h3>
   <form (submit)="$event.preventDefault(); addTask()">
-    <input [(ngModel)]="title" name="title" placeholder="Title" class="w-full p-2 mb-2 border rounded" />
-    <textarea [(ngModel)]="description" name="description" rows="3" placeholder="Description (optional)" class="w-full p-2 mb-2 border rounded"></textarea>
-    <input [(ngModel)]="createdBy" name="createdBy" placeholder="Created By" class="w-full p-2 mb-2 border rounded" />
+    <input [(ngModel)]="title" name="title" placeholder="Title" class="w-full p-2 mb-2 border border-gray-500 rounded" />
+    <textarea [(ngModel)]="description" name="description" rows="3" placeholder="Description (optional)" class="w-full p-2 mb-2 border border-gray-500 rounded"></textarea>
+    <input [(ngModel)]="createdBy" name="createdBy" placeholder="Created By" class="w-full p-2 mb-2 border border-gray-500 rounded" />
     <div *ngIf="duplicateError" class="text-sm text-red-600 mb-2">{{duplicateError}}</div>
     <button class="px-4 py-2 rounded bg-blue-600 text-white">Add</button>
   </form>

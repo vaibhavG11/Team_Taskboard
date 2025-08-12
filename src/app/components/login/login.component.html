@@ -1,9 +1,9 @@
-<div class="max-w-md mx-auto mt-20 p-6 bg-white rounded shadow">
-  <h2 class="text-lg font-semibold mb-4">Login as {{ role }}</h2>
-  <input [(ngModel)]="name" placeholder="Name" class="w-full p-2 mb-2 border rounded" />
-  <input [(ngModel)]="id" placeholder="ID" class="w-full p-2 mb-2 border rounded" />
+<div class="max-w-md mx-auto mt-20 p-6 bg-gray-600 rounded shadow">
+  <h2 class="text-lg text-white font-semibold mb-4">Login as {{ role }}</h2>
+  <input [(ngModel)]="name" placeholder="Name" class="w-full p-2 mb-2 border rounded" /> <br> <br>
+  <input [(ngModel)]="id" placeholder="ID" class="w-full p-2 mb-2 border rounded" /> <br><br>
   <div class="flex gap-2">
-    <button class="px-4 py-2 bg-blue-600 text-white rounded" (click)="login()">Login</button>
+    <button class="px-4 py-2 bg-green-600 text-white rounded" (click)="login()">Login</button>
     <!-- <a class="px-4 py-2 border rounded" routerLink="/">Back</a> -->
   </div>
 </div>
