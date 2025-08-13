@@ -6,4 +6,5 @@ export interface Task {
   status: 'Backlog' | 'In Progress' | 'Done';
   movedBy?: string;
   movedAt?: string;
+  teamId: string;
 }

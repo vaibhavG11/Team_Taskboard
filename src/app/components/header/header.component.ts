@@ -32,6 +32,6 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('taskboard_user');
     this.store.dispatch(logoutUser());
-    this.router.navigate(['/']);
+    this.router.navigate(['/team']);
   }
 }

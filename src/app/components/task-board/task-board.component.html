@@ -10,8 +10,8 @@
           <div *ngIf="t.movedBy" class="text-xs text-gray-400">Moved by: {{ t.movedBy }} at {{ t.movedAt | date:'short' }}</div>
         </div>
         <div class="flex flex-col gap-2">
-          <button *ngIf="canMove() && t.status === 'Backlog'" (click)="move(t)" class="px-2 py-1 rounded bg-indigo-600 text-white text-sm">Move to In Progress</button>
-          <button *ngIf="canMove() && t.status === 'In Progress'" (click)="move(t)" class="px-2 py-1 rounded bg-green-600 text-white text-sm">Move to Done</button>
+          <button *ngIf="canMove() && t.status === 'Backlog'" (click)="moveTask(task, 'In Progress')" class="px-2 py-1 rounded bg-indigo-600 text-white text-sm">Move to In Progress</button>
+          <button *ngIf="canMove() && t.status === 'In Progress'" (click)="moveTask(task, 'Done')" class="px-2 py-1 rounded bg-green-600 text-white text-sm">Move to Done</button>
         </div>
       </div>
     </div>

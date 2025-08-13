@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { selectAllTasks } from '../../state/task.selectors';
 import { moveTask } from '../../state/task.actions';
 import { Task } from '../../core/models/task.model';
+import { selectAllTasks } from '../../state/task.selectors';
+// import { updateTaskStatus } from '../../state/task.actions';
 
 @Component({
   selector: 'app-task-board',
@@ -13,12 +14,14 @@ import { Task } from '../../core/models/task.model';
 })
 export class TaskBoardComponent {
   tasks: Task[] = [];
+  currentUser: any;
   user: any = null;
   columns = ['Backlog', 'In Progress', 'Done'];
 
   constructor(private store: Store) {
 
     const rawUser = localStorage.getItem('taskboard_user');
+
 
     if (rawUser) { 
       try { 
@@ -44,6 +47,15 @@ export class TaskBoardComponent {
       const r = localStorage.getItem('taskboard_user'); if (r) this.user = JSON.parse(r);
     });
   }
+
+  ngOnInit() {
+  this.currentUser = JSON.parse(localStorage.getItem('taskboard_user') || '{}');
+
+  this.store.select(selectAllTasks).subscribe(tasks => {
+    // Only show tasks for the same team
+    this.tasks = tasks.filter(task => task.teamId === this.currentUser.teamId);
+  });
+}
 
   getTasks(status: string) {
     return this.tasks.filter(t => t.status === status);

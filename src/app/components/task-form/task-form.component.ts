@@ -56,14 +56,16 @@ export class TaskFormComponent {
       return; 
     }
     
+    const currentUser = JSON.parse(localStorage.getItem('taskboard_user') || '{}');
     const task: Task = {
-      id: uuidv4(),
-      title: this.title.trim(),
-      description: this.description.trim(),
-      createdBy: this.createdBy || this.user?.name || 'Unknown',
-      status: 'Backlog' as const
-    };
-    this.store.dispatch(addTask({ task }));
+    id: uuidv4(),
+    title: this.title,
+    description: this.description,
+    createdBy: currentUser.name,
+    status: 'Backlog',
+    teamId: currentUser.teamId
+  };
+  this.store.dispatch(addTask({ task }));
     this.title = ''; this.description = '';
   }
 }
